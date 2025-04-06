@@ -10,5 +10,5 @@ RUN npm install
 COPY ./backend ./backend
 
 EXPOSE 5000
-
+#Run CMD
 CMD [ "npm","run","dev" ]
