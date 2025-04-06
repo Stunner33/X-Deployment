@@ -27,7 +27,7 @@ jobs:
           context: .
           file: ./Docker/Dockerfile.backend
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/xclone-backend:${{ github.sha }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/xclone-backend:latest
 
       - name: Build & Push Frontend Image
         uses: docker/build-push-action@v4
@@ -35,7 +35,7 @@ jobs:
           context: .
           file: ./Docker/Dockerfile.frontend
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/xclone-frontend:${{ github.sha }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/xclone-frontend:latest
 
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v1.0.0
