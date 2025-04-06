@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Docker/Dockerfile.backend
+    container_name: xclone-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Docker/Dockerfile.frontend
+    container_name: xclone-frontend
+    ports:
+      - "3000:5173"
+    networks:
+      - app-network
+    depends_on:
+      - backend
+
+networks:
+  app-network:
+    driver: bridge
